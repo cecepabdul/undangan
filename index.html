@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elsa &amp; Wildan - Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --milk-chocolate: #8B4513;
+            --light-chocolate: #A0522D;
+            --dark-chocolate: #654321;
+            --cream: #F5E6D3;
+            --light-cream: #FAF0E6;
+            --warm-brown: #D2B48C;
+            --text-dark: #3E2723;
+            --text-light: #FFFFFF;
+            --accent-gold: #DAA520;
+            --soft-pink: #F4A6CD;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-brown) 50%, var(--light-chocolate) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--milk-chocolate) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--dark-chocolate) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-fadeIn { animation: fadeIn 1s ease-out; }
+        .animate-slideIn { animation: slideIn 0.8s ease-out; }
+        .animate-bounce { animation: bounce 2s infinite; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--light-cream) 0%, var(--cream) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--milk-chocolate), var(--accent-gold));
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--milk-chocolate);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--dark-chocolate);
+            transform: rotate(90deg);
+        }
+
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--light-chocolate));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(139, 69, 19, 0.5);
+            background: linear-gradient(135deg, var(--dark-chocolate), var(--milk-chocolate));
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--cream), var(--warm-brown));
+            color: var(--text-dark);
+            border: 2px solid var(--milk-chocolate);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--warm-brown), var(--light-chocolate));
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--milk-chocolate);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--light-cream) 0%, var(--cream) 50%, var(--warm-brown) 100%);
+        }
+
+        .hero-names {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--milk-chocolate);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-quote {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            font-style: italic;
+            color: var(--dark-chocolate);
+        }
+
+        .arabic-text {
+            font-size: 1.8rem;
+            color: var(--milk-chocolate);
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--dark-chocolate));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Animated Dividers */
+        .section-divider {
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            position: relative;
+        }
+
+        .divider-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.8), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .divider-ornament {
+            position: absolute;
+            background: var(--cream);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--accent-gold);
+            color: var(--milk-chocolate);
+            font-size: 1.2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Combined Card Styles */
+        .combined-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 900px;
+            border: 3px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .combined-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--milk-chocolate), var(--accent-gold));
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--dark-chocolate));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 50px 50px;
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Couple Section */
+        .couple-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .couple-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .couple-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .couple-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--warm-brown), var(--light-chocolate));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 4px solid var(--accent-gold);
+        }
+
+        .couple-name {
+            font-size: 1.8rem;
+            color: var(--milk-chocolate);
+            margin-bottom: 10px;
+        }
+
+        .ampersand {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), var(--milk-chocolate));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Event Section */
+        .event-card {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--dark-chocolate));
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Gift Accordion Styles */
+        .gift-accordion {
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--light-cream), var(--cream));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .accordion-header:hover::before {
+            left: 100%;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, var(--cream), var(--warm-brown));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+        }
+
+        .accordion-header.active {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--light-chocolate));
+            color: white;
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--milk-chocolate);
+            transition: color 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-title {
+            color: white;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon {
+            color: var(--accent-gold);
+        }
+
+        .accordion-chevron {
+            font-size: 1.2rem;
+            color: var(--milk-chocolate);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-chevron {
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 30px;
+        }
+
+        .accordion-content-inner {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .accordion-content.active .accordion-content-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Bank Transfer Content */
+        .bank-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, var(--light-cream), var(--cream));
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .bank-details {
+            flex: 1;
+        }
+
+        .bank-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--milk-chocolate);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .account-holder {
+            font-size: 1rem;
+            color: var(--dark-chocolate);
+            margin-bottom: 8px;
+        }
+
+        .account-number {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--milk-chocolate);
+            letter-spacing: 2px;
+            background: rgba(139, 69, 19, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--light-chocolate));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+            background: linear-gradient(135deg, var(--dark-chocolate), var(--milk-chocolate));
+        }
+
+        /* QRIS Content */
+        .qris-container {
+            text-align: center;
+        }
+
+        .qris-image {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+            border: 3px solid var(--accent-gold);
+            background: var(--light-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--warm-brown);
+        }
+
+        .qris-info {
+            color: var(--dark-chocolate);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Gift Address Content */
+        .address-container {
+            background: linear-gradient(135deg, var(--light-cream), var(--cream));
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .address-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--milk-chocolate);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .address-text {
+            font-size: 1.1rem;
+            color: var(--dark-chocolate);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Responsive Design for Accordion */
+        @media (max-width: 768px) {
+            .accordion-header {
+                padding: 20px;
+            }
+            
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+            
+            .bank-info {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .qris-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .accordion-content.active {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .accordion-header {
+                padding: 15px;
+            }
+            
+            .accordion-title {
+                font-size: 1rem;
+            }
+            
+            .accordion-icon {
+                font-size: 1.3rem;
+            }
+            
+            .qris-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* RSVP Form */
+        .rsvp-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--milk-chocolate);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--warm-brown);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--light-cream);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--milk-chocolate);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 40px;
+            color: var(--milk-chocolate);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--dark-chocolate);
+            color: white;
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 768px) {
+            /* Container and spacing adjustments */
+            .container { 
+                padding: 0 15px; 
+                max-width: 100%;
+            }
+            
+            .section { 
+                padding: 40px 0; 
+            }
+            
+            /* Hero section mobile fixes */
+            .hero {
+                min-height: 100vh;
+                padding: 20px 0;
+            }
+            
+            .hero-names { 
+                font-size: 2.5rem; 
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .hero img {
+                width: 300px !important;
+                height: 300px !important;
+                max-width: 90vw;
+                max-height: 90vw;
+            }
+            
+            /* Countdown mobile optimization - Keep in single horizontal line */
+            .countdown { 
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px; 
+                max-width: 100%;
+                margin: 1.5rem auto;
+                padding: 0 15px;
+                overflow-x: auto;
+            }
+            
+            .countdown-item { 
+                flex: 1;
+                min-width: 0;
+                padding: 12px 6px; 
+                min-height: 75px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 12px;
+            }
+            
+            .countdown-number { 
+                font-size: 1.6rem; 
+                line-height: 1;
+                margin-bottom: 4px;
+                font-weight: bold;
+            }
+            
+            .countdown-label { 
+                font-size: 0.75rem; 
+                white-space: nowrap;
+                text-align: center;
+            }
+            
+            /* Section titles */
+            .section-title { 
+                font-size: 2rem; 
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Couple section mobile */
+            .couple-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+                text-align: center;
+            }
+            
+            .couple-avatar img {
+                width: 150px !important;
+                height: 150px !important;
+            }
+            
+            .ampersand { 
+                margin: 20px auto; 
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            /* Cards and content */
+            .combined-card { 
+                padding: 25px 20px; 
+                margin: 1rem 10px; 
+            }
+            
+            .event-card {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .rsvp-form {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            /* Modal mobile */
+            .modal-content { 
+                padding: 1.5rem; 
+                margin: 20px;
+                max-width: calc(100% - 40px);
+            }
+            
+            /* Button adjustments */
+            .btn { 
+                padding: 12px 25px; 
+                font-size: 1rem; 
+                white-space: nowrap;
+            }
+            
+            /* Arabic text mobile */
+            .arabic-text {
+                font-size: 1.4rem;
+                line-height: 1.4;
+            }
+            
+            /* Divider ornaments */
+            .divider-ornament {
+                padding: 8px 15px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .container { 
+                padding: 0 10px; 
+            }
+            
+            .hero-names { 
+                font-size: 2rem; 
+                line-height: 1.1;
+            }
+            
+            .hero img {
+                width: 250px !important;
+                height: 250px !important;
+            }
+            
+            .section-title { 
+                font-size: 1.5rem; 
+            }
+            
+            /* Countdown extra mobile optimization - Keep horizontal */
+            .countdown { 
+                gap: 6px; 
+                margin: 1rem auto;
+                padding: 0 10px;
+            }
+            
+            .countdown-item { 
+                padding: 10px 4px; 
+                min-height: 65px;
+                border-radius: 10px;
+            }
+            
+            .countdown-number { 
+                font-size: 1.3rem; 
+                line-height: 1;
+            }
+            
+            .countdown-label { 
+                font-size: 0.65rem; 
+                line-height: 1.2;
+            }
+            
+            /* Couple section extra small */
+            .couple-name { 
+                font-size: 1.4rem; 
+                line-height: 1.2;
+            }
+            
+            .couple-avatar img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+            
+            /* Cards extra small */
+            .combined-card { 
+                padding: 20px 15px; 
+                margin: 1rem 5px;
+            }
+            
+            .event-card {
+                padding: 25px 15px;
+                margin: 0 5px;
+            }
+            
+            .rsvp-form {
+                padding: 25px 15px;
+                margin: 0 5px;
+            }
+            
+            /* Button extra small */
+            .btn { 
+                padding: 10px 20px; 
+                font-size: 0.9rem; 
+            }
+            
+            /* Arabic text extra small */
+            .arabic-text {
+                font-size: 1.2rem;
+                line-height: 1.3;
+            }
+            
+            /* Modal extra small */
+            .modal-content {
+                padding: 1rem;
+                margin: 15px;
+            }
+            
+            /* Form elements mobile */
+            .form-input, .form-select, .form-textarea {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            /* RSVP cards mobile */
+            .rsvp-card {
+                padding: 20px 15px;
+                margin-bottom: 15px;
+            }
+            
+            .rsvp-card-name {
+                font-size: 1.1rem;
+            }
+            
+            .rsvp-card-attendance {
+                font-size: 0.8rem;
+                padding: 4px 10px;
+            }
+            
+            /* Pagination mobile */
+            .pagination-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .pagination-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .pagination-info {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 20px 0;
+            }
+            
+            .hero img {
+                width: 200px !important;
+                height: 200px !important;
+            }
+            
+            .countdown {
+                gap: 10px;
+                max-width: 500px;
+                padding: 0 20px;
+            }
+            
+            .countdown-item {
+                padding: 8px 4px;
+                min-height: 55px;
+            }
+            
+            .countdown-number {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Fix for very small screens */
+        @media (max-width: 320px) {
+            .hero-names {
+                font-size: 1.8rem;
+            }
+            
+            .hero img {
+                width: 200px !important;
+                height: 200px !important;
+            }
+            
+            .countdown {
+                gap: 4px;
+                padding: 0 8px;
+            }
+            
+            .countdown-item {
+                padding: 8px 3px;
+                min-height: 55px;
+            }
+            
+            .countdown-number {
+                font-size: 1.1rem;
+                line-height: 1;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+                line-height: 1.1;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .arabic-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* RSVP Cards and Pagination Styles */
+        .rsvp-cards-container {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .rsvp-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(245, 230, 211, 0.95));
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .rsvp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-gold), var(--milk-chocolate));
+        }
+
+        .rsvp-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(139, 69, 19, 0.25);
+            border-color: var(--accent-gold);
+        }
+
+        .rsvp-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .rsvp-card-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--milk-chocolate);
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .rsvp-card-attendance {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rsvp-card-attendance.hadir {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+
+        .rsvp-card-attendance.tidak-hadir {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+
+        .rsvp-card-message {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-style: italic;
+            margin: 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .rsvp-card-message::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-family: 'Dancing Script', cursive;
+            line-height: 1;
+        }
+
+        .rsvp-card-message.no-message {
+            color: var(--warm-brown);
+            opacity: 0.8;
+            font-style: normal;
+            padding-left: 0;
+        }
+
+        .rsvp-card-message.no-message::before {
+            display: none;
+        }
+
+        .no-messages {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 230, 211, 0.8));
+            border-radius: 20px;
+            border: 2px dashed var(--warm-brown);
+            margin: 2rem auto;
+            max-width: 500px;
+        }
+
+        .no-messages-icon {
+            font-size: 4rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+
+        .no-messages-text {
+            font-size: 1.2rem;
+            color: var(--dark-chocolate);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .no-messages-subtext {
+            color: var(--warm-brown);
+            font-size: 0.95rem;
+        }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+        }
+
+        .pagination-info {
+            color: var(--dark-chocolate);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            border: 1px solid rgba(139, 69, 19, 0.2);
+        }
+
+        .pagination-btn {
+            background: linear-gradient(135deg, var(--cream), var(--warm-brown));
+            color: var(--dark-chocolate);
+            border: 2px solid var(--milk-chocolate);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--light-chocolate));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .pagination-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        /* Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-pagination {
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        /* Music Control Styles */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            animation: fadeInUp 1s ease-out 2s both;
+        }
+
+        .music-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--milk-chocolate), var(--light-chocolate));
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .music-btn:hover::before {
+            left: 100%;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(139, 69, 19, 0.5);
+            background: linear-gradient(135deg, var(--dark-chocolate), var(--milk-chocolate));
+        }
+
+        .music-btn:active {
+            transform: scale(1.05);
+        }
+
+        .music-btn.paused {
+            background: linear-gradient(135deg, var(--warm-brown), var(--light-chocolate));
+            opacity: 0.7;
+        }
+
+        /* Responsive music control */
+        @media (max-width: 768px) {
+            .music-control {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .music-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .hidden { display: none; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .gap-2 { gap: 0.5rem; }
+    </style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+<!-- Background Music -->
+<audio id="backgroundMusic" loop="" preload="auto">
+<source src="src/backsound.mp3" type="audio/mpeg"/>
+        Your browser does not support the audio element.
+    </audio>
+<!-- Music Control Button (Optional) -->
+<div class="music-control hidden" id="musicControl">
+<button class="music-btn" id="musicToggle" onclick="toggleMusic()">
+<i class="fas fa-pause" id="musicIcon"></i>
+</button>
+</div>
+<!-- Welcome Modal -->
+<div class="modal" id="welcomeModal">
+<div class="modal-content animate-fadeIn">
+<button class="close-btn" onclick="openInvitation()">
+<i class="fas fa-times"></i>
+</button>
+<div class="animate-float">
+<i class="fas fa-heart" style="font-size: 3rem; color: var(--soft-pink); margin-bottom: 1rem;"></i>
+</div>
+<h1 class="dancing-script" style="font-size: 2.5rem; color: var(--milk-chocolate); margin-bottom: 1rem;">
+                Undangan Pernikahan
+            </h1>
+<div style="width: 60px; height: 2px; background: var(--accent-gold); margin: 0 auto 1.5rem;"></div>
+<p style="color: var(--dark-chocolate); margin-bottom: 1rem; font-weight: 600;">
+                Kepada Yth:
+            </p>
+<div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px; margin-bottom: 2rem;">
+<p id="guestNameDisplay" style="font-size: 1.2rem; font-weight: 600; color: var(--milk-chocolate);">
+                    Tamu Undangan
+                </p>
+</div>
+<button class="btn animate-pulse" onclick="openInvitation()">
+<i class="fas fa-envelope-open"></i>
+                Buka Undangan
+            </button>
+</div>
+</div>
+<!-- Main Content -->
+<div class="hidden" id="mainContent">
+<!-- Hero Section -->
+<section class="hero" style="background-image: url('src/bg.jpg'); background-size: cover; background-position: center;">
+<div class="container">
+<div class="animate-fadeIn">
+<div class="animate-float" style="margin-bottom: 2rem;">
+<i class="fas fa-rings-wedding" style="font-size: 4rem; color: var(--accent-gold);"></i>
+</div>
+<img alt="elsawildan" src="src/elsa.png" style="width:500px;height:500px;"/>
+<h1 class="hero-names dancing-script">Elsa &amp; Wildan</h1>
+<div style="width: 100px; height: 3px; background: var(--accent-gold); margin: 0 auto 2rem;"></div>
+<div class="container">
+<div class="animate-slideIn">
+<div class="countdown" id="countdown">
+<div class="countdown-item">
+<span class="countdown-number" id="days">00</span>
+<span class="countdown-label">Hari</span>
+</div>
+<div class="countdown-item">
+<span class="countdown-number" id="hours">00</span>
+<span class="countdown-label">Jam</span>
+</div>
+<div class="countdown-item">
+<span class="countdown-number" id="minutes">00</span>
+<span class="countdown-label">Menit</span>
+</div>
+<div class="countdown-item">
+<span class="countdown-number" id="seconds">00</span>
+<span class="countdown-label">Detik</span>
+</div>
+</div>
+<div class="text-center mt-3">
+<h2 style="font-size: 1rem; color: var(--milk-chocolate); font-weight: bold; margin-bottom: 1rem;">
+                            SENIN, 8 SEPTEMBER 2025
+                        </h2>
+<button class="btn" onclick="saveToCalendar()">
+<i class="fas fa-calendar-plus"></i>
+                            Save Google Calendar
+                        </button>
+</div>
+</div>
+</div>
+<div class="animate-bounce" style="margin-top: 3rem;">
+<i class="fas fa-chevron-down" style="font-size: 1.5rem; color: var(--milk-chocolate);"></i>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote Section -->
+<section class="quote-section section">
+<div class="container">
+<div class="quote-content animate-fadeIn">
+<div style="font-size: 3rem; margin-bottom: 2rem;">
+<i class="fas fa-quote-left" style="color: rgba(255,255,255,0.3);"></i>
+</div>
+<p style="font-size: 0.8rem; margin-bottom: 2rem; line-height: 1.8;">
+                        "Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu. Sesungguhnya yang demikian itu menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir"
+                    </p>
+<p style="font-weight: 300; color: rgba(255,255,255,0.8);">
+                        (QS. Ar-Ruum: 21)
+                    </p>
+</div>
+</div>
+</section>
+<!-- Animated Divider -->
+<div class="section-divider">
+<div class="divider-line"></div>
+<div class="divider-ornament">
+<i class="fas fa-heart"></i>
+</div>
+</div>
+<!-- Combined Islamic Greeting and Couple Section -->
+<section class="section">
+<div class="container">
+<div class="combined-card animate-fadeIn">
+<!-- Islamic Greeting -->
+<div class="text-center" style="font-size: 1.5rem; margin-bottom: 3rem;">
+<div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+<div class="arabic-text">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
+<p style="margin-top: 1.5rem; color: var(--dark-chocolate); font-size: 1.1rem; line-height: 1.6;">
+                            Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan anak kami:
+                        </p>
+</div>
+<!-- Couple Information -->
+<div class="couple-grid animate-slideIn">
+<!-- Bride -->
+<div class="couple-card" style="background: rgba(139, 69, 19, 0.05); border: 2px solid var(--accent-gold);">
+<div class="couple-avatar">
+<img alt="HTML5 Icon" src="src/eca.png" style="width:200px;height:200px;"/>
+</div>
+<h3 class="couple-name dancing-script">Elsa Halimatusyadiah</h3>
+<div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 0 auto 15px;"></div>
+<p style="font-weight: 600; color: var(--dark-chocolate); margin-bottom: 5px;">Putri dari Bapak Wawan Hermawan dan Ibu Ai Suryani</p>
+</div>
+<!-- Ampersand -->
+<div class="ampersand animate-pulse dancing-script">&amp;</div>
+<!-- Groom -->
+<div class="couple-card" style="background: rgba(139, 69, 19, 0.05); border: 2px solid var(--accent-gold);">
+<div class="couple-avatar">
+<img alt="HTML5 Icon" src="src/wildan.png" style="width:200px;height:200px;"/>
+</div>
+<h3 class="couple-name dancing-script">Wildan Farhan Jaelani</h3>
+<div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 0 auto 15px;"></div>
+<p style="font-weight: 600; color: var(--dark-chocolate); margin-bottom: 5px;">Putra dari Bapak Jejen Jaelani dan Ibu Santi Kusmiati</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Animated Divider -->
+<div class="section-divider">
+<div class="divider-line"></div>
+<div class="divider-ornament">
+<i class="fas fa-rings-wedding"></i>
+</div>
+</div>
+<!-- Event Section -->
+<section class="section">
+<div class="container">
+<div class="event-card animate-fadeIn">
+<!-- Wedding Announcement -->
+<div style="margin-bottom: 3rem;">
+<p style="font-size: 1rem; margin-bottom: 2rem; line-height: 1.8;">
+                            Dengan memohon rahmat dan ridho Allah SWT, serta mengucap rasa syukur atas karunia Allah SWT, Kami hendak menyampaikan kabar bahagia pernikahan anak Kami. Yang Insya Allah akan dilaksanakan :
+                        </p>
+<h3 class="dancing-script" style="font-size: 3rem; margin-bottom: 1rem;">Akad Nikah</h3>
+<!-- Separator -->
+<div style="margin: 2rem 0; display: flex; align-items: center; justify-content: center;">
+<div style="flex: 1; height: 1px; background: rgba(255,255,255,0.3);"></div>
+<span style="font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0 1rem; font-style: italic;">dilanjut dengan</span>
+<div style="flex: 1; height: 1px; background: rgba(255,255,255,0.3);"></div>
+</div>
+<h3 class="dancing-script" style="font-size: 3rem; margin-bottom: 2rem;">Resepsi</h3>
+</div>
+<div style="margin-bottom: 2rem;">
+<i class="fas fa-calendar-alt" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-gold);"></i>
+<h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Senin, 8 September 2025</h3>
+<p style="font-size: 1.1rem; font-weight: 600;">08:00 - SELESAI</p>
+</div>
+<div style="margin-bottom: 2rem;">
+<i class="fas fa-home" style="font-size: 2rem; margin-bottom: 1rem; color: var(--accent-gold);"></i>
+<h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: rgba(255,255,255,0.9);">
+                            Di Kediaman Pempelai Wanita
+                        </h4>
+<p style="font-size: 1rem; line-height: 1.6;">
+                            Kp. Cipanjak RT 2 RW 14, Cigugur girang, Parongpong, Kab. Bandung Barat
+                        </p>
+</div>
+<button class="btn" onclick="openLocation()">
+<i class="fas fa-map-marker-alt"></i>
+                        Lihat Lokasi
+                    </button>
+<br/>
+<p style="color: white; line-height: 1.6;">
+                            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu kepada kedua mempelai.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+<p style="opacity: 0.8;">© 2025 Elsa &amp; Wildan Wedding Invitation</p>
+</div>
+</div>
+</footer>
+<script>
+        // Google Apps Script Web App URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwznJz6XpeGsQ4iPzi5UeVW3BELutE_P5oPlCG198oohpsa1voS-192CZMaGFb4xXrvLw/exec";
+
+    async function submitRSVP(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('guestName').value.trim();
+        const attendance = document.getElementById('attendance').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !attendance) {
+            alert('Nama dan kehadiran wajib diisi!');
+            return;
+        }
+
+        // Convert to URL-encoded form data
+        const formData = new URLSearchParams();
+        formData.append("name", name);
+        formData.append("attendance", attendance);
+        formData.append("message", message);
+
+        const btn = document.getElementById("submitBtn");
+        const originalContent = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Mengirim...`;
+
+        try {
+            const response = await fetch(SCRIPT_URL, {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.result === "success") {
+                document.getElementById("rsvpForm").style.display = "none";
+                document.getElementById("successMessage").classList.remove("hidden");
+
+                event.target.reset();
+
+                setTimeout(() => {
+                    loadRSVP();
+                    setTimeout(() => {
+                        document.getElementById("rsvpForm").style.display = "block";
+                        document.getElementById("successMessage").classList.add("hidden");
+                    }, 3000);
+                }, 1000);
+            } else {
+                console.error("Submission failed:", result);
+                alert("Gagal mengirim ucapan. Silakan coba lagi.");
+            }
+
+        } catch (error) {
+            console.error("Error during submission:", error);
+            alert("Terjadi kesalahan saat mengirim. Coba lagi.");
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalContent;
+        }
+    }
+
+        // Pagination variables
+        let allRSVPData = [];
+        let currentPage = 1;
+        const itemsPerPage = 5;
+
+        // Load RSVP entries from Google Sheets with pagination
+        async function loadRSVP() {
+            const container = document.getElementById("rsvpResults");
+            container.innerHTML = "<p style='color: var(--milk-chocolate); text-align: center; padding: 20px;'><i class='fas fa-spinner fa-spin'></i> Memuat ucapan...</p>";
+            
+            try {
+                // Send GET request to fetch all entries
+                const response = await fetch(SCRIPT_URL, {
+                    method: "GET",
+                    mode: 'cors'
+                });
+                
+                const data = await response.json();
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    displayNoMessages(container);
+                    return;
+                }
+
+                // Store all data and reverse to show newest first
+                allRSVPData = data.reverse();
+                
+                // Reset to first page and display
+                currentPage = 1;
+                displayRSVPPage();
+
+            } catch (error) {
+                console.error("Error loading RSVP entries:", error);
+                container.innerHTML = "<p style='color: #f44336; text-align: center; padding: 20px;'><i class='fas fa-exclamation-triangle'></i> Gagal memuat ucapan. Silakan refresh halaman.</p>";
+            }
+        }
+
+        // Display no messages state
+        function displayNoMessages(container) {
+            container.innerHTML = `
+                <div class="no-messages animate-card">
+                    <div class="no-messages-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="no-messages-text">Belum ada ucapan</div>
+                    <div class="no-messages-subtext">Jadilah yang pertama memberikan ucapan dan doa untuk kedua mempelai</div>
+                </div>
+            `;
+        }
+
+        // Display current page of RSVP entries
+        function displayRSVPPage() {
+            const container = document.getElementById("rsvpResults");
+            
+            if (allRSVPData.length === 0) {
+                displayNoMessages(container);
+                return;
+            }
+
+            // Calculate pagination
+            const totalPages = Math.ceil(allRSVPData.length / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentPageData = allRSVPData.slice(startIndex, endIndex);
+
+            // Clear container
+            container.innerHTML = "";
+
+            // Create cards container
+            const cardsContainer = document.createElement('div');
+            cardsContainer.className = 'rsvp-cards-container';
+            
+            // Create cards for current page
+            currentPageData.forEach((item, index) => {
+                const messageCard = createRSVPCard(item, index);
+                cardsContainer.appendChild(messageCard);
+            });
+
+            // Create pagination controls
+            const paginationContainer = createPaginationControls(totalPages);
+
+            // Add to main container
+            container.appendChild(cardsContainer);
+            container.appendChild(paginationContainer);
+        }
+
+        // Create individual RSVP card
+        function createRSVPCard(item, index) {
+            const messageCard = document.createElement("div");
+            messageCard.className = "rsvp-card animate-card";
+            messageCard.style.animationDelay = `${index * 0.1}s`;
+
+            // Handle attendance with trailing space
+            const attendance = (item.attendance || item['attendance '] || '').trim();
+            const attendanceClass = attendance === 'hadir' ? 'hadir' : 'tidak-hadir';
+            const attendanceIcon = attendance === 'hadir' ? 
+                '<i class="fas fa-check-circle"></i>' : 
+                '<i class="fas fa-times-circle"></i>';
+
+            // Create card content
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'rsvp-card-header';
+            cardHeader.innerHTML = `
+                <h4 class="rsvp-card-name">${item.name || 'Anonim'}</h4>
+                <div class="rsvp-card-attendance ${attendanceClass}">
+                    ${attendanceIcon}
+                    <span>${attendance || 'Tidak diketahui'}</span>
+                </div>
+            `;
+
+            const cardMessage = document.createElement('p');
+            if (item.message && item.message.trim()) {
+                cardMessage.className = 'rsvp-card-message';
+                cardMessage.textContent = item.message.trim();
+            } else {
+                cardMessage.className = 'rsvp-card-message no-message';
+                cardMessage.innerHTML = '<i class="fas fa-heart" style="margin-right: 8px; color: var(--warm-brown);"></i>Tidak ada pesan khusus';
+            }
+
+            messageCard.appendChild(cardHeader);
+            messageCard.appendChild(cardMessage);
+
+            return messageCard;
+        }
+
+        // Create pagination controls
+        function createPaginationControls(totalPages) {
+            const paginationContainer = document.createElement('div');
+            paginationContainer.className = 'pagination-container animate-pagination';
+
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-btn';
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i> Sebelumnya';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayRSVPPage();
+                }
+            };
+
+            // Page info
+            const pageInfo = document.createElement('div');
+            pageInfo.className = 'pagination-info';
+            pageInfo.innerHTML = `Halaman ${currentPage} dari ${totalPages} <span style="opacity: 0.7;">(${allRSVPData.length} ucapan)</span>`;
+
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-btn';
+            nextBtn.innerHTML = 'Selanjutnya <i class="fas fa-chevron-right"></i>';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayRSVPPage();
+                }
+            };
+
+            paginationContainer.appendChild(prevBtn);
+            paginationContainer.appendChild(pageInfo);
+            paginationContainer.appendChild(nextBtn);
+
+            return paginationContainer;
+        }
+
+        // Background music variables
+        let backgroundMusic = null;
+        let isMusicPlaying = false;
+
+        // Initialize background music
+        function initializeMusic() {
+            backgroundMusic = document.getElementById('backgroundMusic');
+            
+            // Set volume to a comfortable level
+            backgroundMusic.volume = 0.3;
+            
+            // Add event listeners
+            backgroundMusic.addEventListener('loadeddata', () => {
+                console.log('Background music loaded successfully');
+            });
+            
+            backgroundMusic.addEventListener('error', (e) => {
+                console.error('Error loading background music:', e);
+            });
+            
+            backgroundMusic.addEventListener('ended', () => {
+                // This shouldn't happen with loop=true, but just in case
+                if (isMusicPlaying) {
+                    backgroundMusic.currentTime = 0;
+                    backgroundMusic.play().catch(console.error);
+                }
+            });
+        }
+
+        // Start background music
+        function startBackgroundMusic() {
+            if (backgroundMusic && !isMusicPlaying) {
+                backgroundMusic.play()
+                    .then(() => {
+                        isMusicPlaying = true;
+                        console.log('Background music started');
+                        
+                        // Show music control after a delay
+                        setTimeout(() => {
+                            document.getElementById('musicControl').classList.remove('hidden');
+                        }, 2000);
+                    })
+                    .catch((error) => {
+                        console.error('Error playing background music:', error);
+                        // Some browsers require user interaction before playing audio
+                        // The music will start when user clicks "Buka Undangan"
+                    });
+            }
+        }
+
+        // Toggle music play/pause
+        function toggleMusic() {
+            if (!backgroundMusic) return;
+            
+            const musicIcon = document.getElementById('musicIcon');
+            const musicBtn = document.getElementById('musicToggle');
+            
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                isMusicPlaying = false;
+                musicIcon.className = 'fas fa-play';
+                musicBtn.classList.add('paused');
+                musicBtn.title = 'Play Music';
+            } else {
+                backgroundMusic.play()
+                    .then(() => {
+                        isMusicPlaying = true;
+                        musicIcon.className = 'fas fa-pause';
+                        musicBtn.classList.remove('paused');
+                        musicBtn.title = 'Pause Music';
+                    })
+                    .catch((error) => {
+                        console.error('Error playing music:', error);
+                    });
+            }
+        }
+
+        // Open invitation function
+        function openInvitation() {
+            document.getElementById('welcomeModal').style.display = 'none';
+            document.getElementById('mainContent').classList.remove('hidden');
+            startCountdown();
+            
+            // Start background music when invitation is opened
+            startBackgroundMusic();
+            
+            // Add entrance animations
+            setTimeout(() => {
+                document.querySelectorAll('.animate-fadeIn, .animate-slideIn').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 100);
+        }
+        
+        // Countdown timer
+        function startCountdown() {
+            const targetDate = new Date('2025-09-08T08:00:00').getTime();
+            
+            countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+                
+                if (difference > 0) {
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                } else {
+                    clearInterval(countdownInterval);
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }, 1000);
+        }
+        
+        // Save to Google Calendar
+        function saveToCalendar() {
+            const startDate = '20250908T080000Z';
+            const endDate = '20250908T120000Z';
+            const title = 'Pernikahan Elsa & Wildan';
+            const details = 'Acara Pernikahan Elsa Halimatusyadiah & Wildan Farhan Jaelani';
+            const location = 'Kp. Cipanjak RT 2 RW 14, Cigugur girang, Parongpong, Kab. Bandung Barat';
+            
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            
+            window.open(googleCalendarUrl, '_blank');
+        }
+        
+        // Open location in Google Maps
+        function openLocation() {
+        window.open("https://maps.app.goo.gl/mqBHzuFEpZin6o6Q7", "_blank");
+        }
+        
+        // Accordion functionality
+        function toggleAccordion(section) {
+            const content = document.getElementById(`${section}-content`);
+            const header = content.previousElementSibling;
+            const chevron = document.getElementById(`${section}-chevron`);
+            
+            // Close all other accordions
+            const allContents = document.querySelectorAll('.accordion-content');
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            const allChevrons = document.querySelectorAll('.accordion-chevron');
+            
+            allContents.forEach((item, index) => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                    allHeaders[index].classList.remove('active');
+                    allChevrons[index].style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current accordion
+            const isActive = content.classList.contains('active');
+            
+            if (isActive) {
+                content.classList.remove('active');
+                header.classList.remove('active');
+                chevron.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                header.classList.add('active');
+                chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Copy to clipboard function
+        function copyToClipboard(text, accountType) {
+            navigator.clipboard.writeText(text).then(() => {
+                const button = document.getElementById(`copy-text-${accountType}`);
+                const originalText = button.textContent;
+                button.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                
+                setTimeout(() => {
+                    if (accountType === 'bank') {
+                        button.innerHTML = '<i class="fas fa-copy"></i> Salin Nomor';
+                    } else {
+                        button.innerHTML = '<i class="fas fa-copy"></i> Salin Nomor';
+                    }
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const button = document.getElementById(`copy-text-${accountType}`);
+                button.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                
+                setTimeout(() => {
+                    if (accountType === 'bank') {
+                        button.innerHTML = '<i class="fas fa-copy"></i> Salin Nomor';
+                    } else {
+                        button.innerHTML = '<i class="fas fa-copy"></i> Salin Nomor';
+                    }
+                }, 2000);
+            });
+        }
+        
+        // Function to get guest name from URL parameter
+        function getGuestNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            
+            if (guestName) {
+                // Decode URL-encoded characters (e.g., %20 becomes space)
+                return decodeURIComponent(guestName);
+            }
+            
+            // Fallback to default text
+            return 'Tamu Undangan';
+        }
+
+        // Update guest name display
+        function updateGuestNameDisplay() {
+            const guestNameElement = document.getElementById('guestNameDisplay');
+            if (guestNameElement) {
+                const guestName = getGuestNameFromURL();
+                guestNameElement.textContent = guestName;
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update guest name from URL parameter
+            updateGuestNameDisplay();
+            
+            // Initialize background music
+            initializeMusic();
+            
+            // Load RSVP entries when page loads
+            loadRSVP();
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all animated elements
+            document.querySelectorAll('.animate-fadeIn, .animate-slideIn').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease-out';
+                observer.observe(el);
+            });
+        });
+        
+        // Add floating animation to decorative elements
+        function addFloatingAnimation() {
+            const floatingElements = document.querySelectorAll('.animate-float');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.5}s`;
+            });
+        }
+        
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            addFloatingAnimation();
+        });
+        
+        // Add parallax effect to background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-pattern');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
